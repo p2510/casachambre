@@ -32,8 +32,11 @@
   definePageMeta({
     layout: "welcome",
     alias: "/tarif",
-  
   });
+  useHead({
+  title:' Notre tarif est abordable pour vous afin de vous satisfaire et de rendre le service accessible à tous .',
+})
+
   </script>
   
   <style scoped></style>

@@ -15,6 +15,10 @@
     layout: "default",
     alias: "/",
   });
+  useHead({
+  title:'Bienvenue sur casachambre , trouver maintenant une chambre sur casabanca',
+})
+
   </script>
   <style scoped>
   p{

@@ -5,14 +5,14 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-16",
       viewport: "width=500, initial-scale=1",
-      title: "Fable Christ",
+      title: "CasaChambre ",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: "description", name: "description", content: "" },
+        { hid: "description", name: "description", content: "Casa chambre est un endroit qui vous permet de trouver des chambres rapidement pour la communanuté subsahérienne au Maroc sur la ville de CasaBlanca rapidement ." },
         { name: "format-detection", content: "telephone=no" },
       ],
-      link: [{ rel: "icon", type: "image/x-png", href: "/logo.png" }],
+      link: [{ rel: "icon", type: "image/x-png", href: "/favicon.png" }],
     },
   },
   runtimeConfig: {

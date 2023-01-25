@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full bg-slate-800">
     <!-- large -->
-    <section class="hidden lg:grid grid-cols-7 gap-4 items-center">
+    <section class="px-2 hidden lg:grid grid-cols-7 gap-4 items-center">
       <div class="col-span-2 flex flex-col gap-2">
         <h3 class="text-white">Recherche</h3>
         <div class="flex items-center relative">
@@ -191,7 +191,11 @@
       </ul>
     </aside>
     <!--data -->
-    <div class="w-full grid grid-cols-12 gap-4 px-2 mt-12 md:mt-16 ">
+    <div class="w-full grid grid-cols-12 gap-4 px-2 mt-12 md:mt-16">
+      <MoleculesCardSkeleton
+        v-if="pending"
+        class="col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full"
+      />
       <div
         v-for="(item, index) in data.data"
         :key="index"
@@ -224,6 +228,10 @@ definePageMeta({
   layout: "welcome",
   alias: "/dashboard",
 });
+useHead({
+  title:' Les chambres disponibles actuellement sur CasaChambre , Vous pouvez trouver votre chambre',
+})
+
 let visibilityFilter: Ref<boolean> = ref(false);
 const showFilter = (): void => {
   visibilityFilter.value = !visibilityFilter.value;

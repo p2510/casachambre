@@ -55,6 +55,10 @@ definePageMeta({
   layout: "welcome",
   alias: "/faq",
 });
+useHead({
+  title:' Vous avez des questions et vous souhaitez avoir une réponse ? ',
+})
+
 const faqs:Ref<{title:string,content:string}[]>=ref([
   {
     title:'Comment mettre ma chambre sur casachambre ? ',

@@ -61,7 +61,7 @@
         </NuxtLink>
       </menu>
     </div>
-    <main  class="lg:px-4  mt-2 h-screen bg-slate-800" >
+    <main  class=" mt-2 h-screen bg-slate-800" >
       <slot   />
 
     </main>
