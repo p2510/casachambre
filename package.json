@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^6.2.0"
+    "@nuxtjs/tailwindcss": "^6.2.0",
+    "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

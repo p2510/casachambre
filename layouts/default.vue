@@ -2,7 +2,6 @@
   <div class="default h-screen relative">
     <OrganismsNavBar
       :class="visibilityMenu ? 'z-40 h-1/3' : ''"
-      
     >
     <template #btn>
       <MoleculesMenu @click="showMenu" />
@@ -24,14 +23,14 @@
             Dashboard
           </li>
         </NuxtLink>
-        <NuxtLink to="/">
+        <NuxtLink to="/tarif">
           <li
             class="text-white font-semibold text-lg md:text-xl xl:text-2xl tracking-wider hover:bg-white hover:text-slate-800 p-4 rounded-lg transition duration-300 ease-in-out"
           >
             tarif
           </li>
         </NuxtLink>
-        <NuxtLink to="/">
+        <NuxtLink to="/faq">
           <li
             class="text-white font-semibold text-lg md:text-xl xl:text-2xl tracking-wider hover:bg-white hover:text-slate-800 p-4 rounded-lg transition duration-300 ease-in-out"
           >

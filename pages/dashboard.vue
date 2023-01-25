@@ -4,28 +4,30 @@
     <section class="hidden lg:grid grid-cols-7 gap-4 items-center">
       <div class="col-span-2 flex flex-col gap-2">
         <h3 class="text-white">Recherche</h3>
-        <form class="flex items-center relative">
+        <div class="flex items-center relative">
           <input
+            v-model="filter.text"
             type="text"
             class="search rounded-full bg-transparent p-2 w-full text-white"
             placeholder="Quartier , Prix , niveau d'étage  ..."
           />
-          <input
-            type="submit"
-            class="cursor-pointer text-white text-lg bg-emerald-500 hover:bg-emerald-600 transition duration-500 ease-in-out rounded-full w-10 h-10 absolute right-0"
-            value="→"
-          />
-        </form>
+        </div>
       </div>
       <div class="col-span-1 flex flex-col gap-2">
         <label for="quartier" class="text-white text-sm">Quartier</label>
         <select
+          v-model="filter.sector"
           name="quartier"
           class="col-span-1 bg-slate-700 rounded-md text-white p-2"
         >
-          <option value="aa">fdftgfg</option>
-          <option value="aa">fdftgfg</option>
-          <option value="aa">fdftgfg</option>
+          <option value="Tous">Tous</option>
+          <option
+            v-for="(sector, index) in sectors"
+            :key="index"
+            :value="sector"
+          >
+            {{ sector }}
+          </option>
         </select>
       </div>
       <div class="col-span-2 flex flex-col gap-2">
@@ -33,35 +35,41 @@
           >Votre budget ( en Dh )</label
         >
         <select
+          v-model="filter.rent"
           name="budget"
           class="col-span-1 bg-slate-700 rounded-md text-white p-2"
         >
-          <option value="aa">300-1000</option>
-          <option value="aa">1000-1700</option>
-          <option value="aa">1700-3000</option>
+          <option value="0">Tous</option>
+          <option value="1000">max 1000 Dh</option>
+          <option value="1700">max de 1700 Dh</option>
+          <option value="3000">max de 3000 Dh</option>
         </select>
       </div>
       <div class="col-span-1 flex flex-col gap-2">
         <label for="niveau" class="text-white text-sm">Niveau d'étages</label>
         <select
+          v-model="filter.stage"
           name="niveau"
           class="col-span-1 bg-slate-700 rounded-md text-white p-2"
         >
-          <option value="aa">Rez de chaussée</option>
-          <option value="aa">1</option>
-          <option value="aa">2</option>
-          <option value="aa">3</option>
-          <option value="aa">4</option>
+          <option value="-1">Tous</option>
+          <option value="0">Rez de chaussée</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
         </select>
       </div>
       <div class="col-span-1 flex flex-col gap-2">
         <label for="salon" class="text-white text-sm">Salon ouvert </label>
         <select
+          v-model="filter.openroom"
           name="niveau"
           class="col-span-1 bg-slate-700 rounded-md text-white p-2"
         >
-          <option value="false">Non</option>
-          <option value="true">Oui</option>
+          <option value="Tous">Tous</option>
+          <option value="non">Non</option>
+          <option value="oui">Oui</option>
         </select>
       </div>
     </section>
@@ -69,18 +77,14 @@
     <section class="grid lg:hidden grid-cols-1 gap-4 items-center px-2">
       <div class="col-span-full flex flex-col gap-2">
         <h3 class="text-white">Recherche</h3>
-        <form class="flex items-center relative">
+        <div class="flex items-center relative">
           <input
+            v-model="filter.text"
             type="text"
             class="search rounded-full bg-transparent p-2 w-full text-white"
             placeholder="Quartier , Prix , niveau d'étage  ..."
           />
-          <input
-            type="submit"
-            class="cursor-pointer text-white text-lg bg-emerald-500 hover:bg-emerald-600 transition duration-500 ease-in-out rounded-full w-10 h-10 absolute right-0"
-            value="→"
-          />
-        </form>
+        </div>
       </div>
       <div class="flex justify-center items-center gap-x-2">
         <span class="text-slate-400 underline tracking-wider">Filtrer</span>
@@ -99,15 +103,18 @@
       </div>
     </section>
 
-    <aside v-if="visibilityFilter" class="filter fixed top-0 bg-slate-700 z-40 w-3/4 h-screen">
-      <div class=" flex justify-around">
+    <aside
+      v-if="visibilityFilter"
+      class="filter fixed top-0 bg-slate-700 z-40 w-3/4 h-screen"
+    >
+      <div class="flex justify-around">
         <h2 class="text-white tracking-wide text-2xl text-center py-4">
           Filtrer
         </h2>
         <button @click="showFilter">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 text-white"
+            class="w-6 h-6 text-white"
             viewBox="0 0 24 24"
           >
             <path
@@ -117,18 +124,24 @@
           </svg>
         </button>
       </div>
-      <ul class=" flex h-full flex-col justify-start gap-y-6 p-4">
+      <ul class="flex h-full flex-col justify-start gap-y-6 p-4">
         <li class="flex flex-col gap-2">
           <label for="quartier" class="text-slate-50 text-lg font-semibold"
             >Quartier</label
           >
           <select
+            v-model="filter.sector"
             name="quartier"
             class="bg-slate-900 rounded-md text-slate-100 text-lg font-semibold p-2"
           >
-            <option value="aa">fdftgfg</option>
-            <option value="aa">fdftgfg</option>
-            <option value="aa">fdftgfg</option>
+            <option value="Tous">Tous</option>
+            <option
+              v-for="(sector, index) in sectors"
+              :key="index"
+              :value="sector"
+            >
+              {{ sector }}
+            </option>
           </select>
         </li>
         <li class="col-span-2 flex flex-col gap-2">
@@ -136,12 +149,14 @@
             >Votre budget ( en Dh )</label
           >
           <select
+            v-model="filter.rent"
             name="budget"
             class="bg-slate-900 rounded-md text-slate-100 text-lg font-semibold p-2"
           >
-            <option value="aa">300-1000</option>
-            <option value="aa">1000-1700</option>
-            <option value="aa">1700-3000</option>
+            <option value="0">Tous</option>
+            <option value="1000">max 1000 Dh</option>
+            <option value="1700">max de 1700 Dh</option>
+            <option value="3000">max de 3000 Dh</option>
           </select>
         </li>
         <li class="col-span-2 flex flex-col gap-2">
@@ -149,9 +164,11 @@
             >Niveau d'étages</label
           >
           <select
+            v-model="filter.stage"
             name="niveau"
             class="bg-slate-900 rounded-md text-slate-100 text-lg font-semibold p-2"
           >
+            <option value="-1">Tous</option>
             <option value="0">Rez de chaussée</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -162,87 +179,136 @@
         <li class="col-span-2 flex flex-col gap-2">
           <label for="salon" class="text-white text-sm">Salon ouvert </label>
           <select
+            v-model="filter.openroom"
             name="salon"
             class="bg-slate-900 rounded-md text-slate-100 text-lg font-semibold p-2"
           >
-            <option value="false">Non</option>
-            <option value="true">Oui</option>
+            <option value="Tous">Tous</option>
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
           </select>
         </li>
       </ul>
     </aside>
     <!--data -->
-    <div class="w-full grid grid-cols-12 gap-4 px-2 mt-12 md:mt-16">
-      <MoleculesCard
-        class="col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full"
-      />
-      <MoleculesCard
-        class="col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full"
-      />
-      <MoleculesCard
-        class="col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full"
-      />
-      <MoleculesCard
-        class="col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full"
-      />
-    </div>
-    <div class="flex justify-center  py-10">
-      <div aria-label="pagination casachambre">
-        <ul class="flex list-style-none gap-4">
-          <li class="page-item disabled">
-            <a
-              class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-white hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Précédent</a
-            >
-          </li>
-          <li class="page-item">
-            <a
-              class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-slate-50 hover:text-slate-700 hover:bg-gray-200 focus:shadow-none"
-              href="#"
-              >1</a
-            >
-          </li>
-          <li class="page-item active">
-            <a
-              class="page-link relative block py-1.5 px-3 border-0 bg-emerald-500 outline-none transition-all duration-300 rounded-full text-white hover:text-white hover:bg-emerald-600 shadow-md focus:shadow-md"
-              href="#"
-              >2 <span class="visually-hidden"></span
-            ></a>
-          </li>
-          <li class="page-item">
-            <a
-              class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-slate-50 hover:text-slate-700 hover:bg-gray-200 focus:shadow-none"
-              href="#"
-              >3</a
-            >
-          </li>
-          <li class="page-item">
-            <a
-              class="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-full text-white hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-              href="#"
-              >Suivant</a
-            >
-          </li>
-        </ul>
+    <div class="w-full grid grid-cols-12 gap-4 px-2 mt-12 md:mt-16 ">
+      <div
+        v-for="(item, index) in data.data"
+        :key="index"
+        :class="
+          isFilter(item.rent, item.sector, item.stage, item.openroom)
+            ? 'col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full'
+            : 'hidden'
+        "
+      >
+        <MoleculesCard
+          v-if="isFilter(item.rent, item.sector, item.stage, item.openroom)"
+          :id="item.id"
+          :rent="item.rent"
+          :sector="item.sector"
+          :stage="item.stage"
+          :openroom="item.openroom"
+          :bail="item.bail"
+          :lydec="item.lydec"
+          :photo="item.photo"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type {Ref} from 'vue'
+import type { Ref } from "vue";
+import sectors from "@/utils/sectors";
 definePageMeta({
   layout: "welcome",
   alias: "/dashboard",
 });
-let visibilityFilter:Ref<boolean>=ref(false);
-const showFilter=():void=>{
- visibilityFilter.value=!visibilityFilter.value;
-}
+let visibilityFilter: Ref<boolean> = ref(false);
+const showFilter = (): void => {
+  visibilityFilter.value = !visibilityFilter.value;
+};
 
+const filter: Ref<{
+  sector: string;
+  rent: number;
+  stage: number;
+  openroom: string;
+  text: string;
+}> = ref({
+  sector: "Tous",
+  rent: 0,
+  stage: -1,
+  openroom: "Tous",
+  text: "",
+});
+const text: Ref<string> = ref("");
+
+let isFilter = (
+  price: number,
+  sector: string,
+  stage: number,
+  openroom: string
+): boolean => {
+  let response: Ref<boolean> = ref(true);
+  const filterPrice = (): boolean => {
+    let res: Ref<boolean> = ref(false);
+    if (price <= filter.value.rent || filter.value.rent == 0) {
+      res.value = true;
+    }
+    return res.value;
+  };
+  const filterSector = (): boolean => {
+    let res: Ref<boolean> = ref(false);
+    if (filter.value.sector === sector || filter.value.sector === "Tous") {
+      res.value = true;
+    }
+    return res.value;
+  };
+  const filterStage = (): boolean => {
+    let res: Ref<boolean> = ref(false);
+    if (filter.value.stage == stage || filter.value.stage == -1) {
+      res.value = true;
+    }
+    return res.value;
+  };
+  const filterOpenRoom = (): boolean => {
+    let res: Ref<boolean> = ref(false);
+
+    if (filter.value.openroom == openroom || filter.value.openroom == "Tous") {
+      res.value = true;
+    }
+    return res.value;
+  };
+  let filterText = (): boolean => {
+    let res: Ref<boolean> = ref(false);
+    const val: number = [
+      price.toString(),
+      stage.toString(),
+      sector,
+      openroom,
+    ].filter((item) => item.includes(filter.value.text)).length;
+    if (val > 0 || filter.value.text === "") {
+      res.value = true;
+    }
+    return res.value;
+  };
+  response.value =
+    filterPrice() &&
+    filterSector() &&
+    filterStage() &&
+    filterOpenRoom() &&
+    filterText();
+  return response.value;
+};
+
+// fetch
+
+const runtime = useRuntimeConfig();
+
+const { data: data, pending: pending }: any = await useFetch(
+  `${runtime.public.apiBase}/room`
+);
 </script>
 
 <style scoped>
@@ -259,14 +325,12 @@ const showFilter=():void=>{
   animation-iteration-count: 1;
 }
 
-
 @keyframes showFilter {
   from {
     width: 0%;
   }
   to {
     width: 75%;
- 
   }
 }
 </style>

@@ -20,15 +20,17 @@ export default defineNuxtConfig({
     apiSecret: "123",
     // Keys within public are also exposed client-side
     public: {
-      apiBase: "http://localhost:8000",
+      apiBase: "https://6v0wcbgl.directus.app/items/",
     },
   },
   routeRules: {
     "/": { ssr: true },
-    "/dashboard": { ssr: true },
+    "/dashboard": { ssr: true},
     "/faq": { ssr: true },
+    "/tarif": { ssr: true },
   },
   modules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+  
   ],
 })
