@@ -12,8 +12,9 @@
     <div class="grid grid-cols-4 px-2 md:px-4 gap-4 md:gap-6 pb-4">
       <span
         class="col-span-2 font-semibold text-lg lg:text-xl text-slate-50 text-opacity-90"
-        >{{ rent }} Dh
+        >{{ rent }}  Dh
       </span>
+      
       <span
         class="col-span-2 font-semibold text-right text-md text-slate-50 text-opacity-90"
         >{{ sector }}</span
@@ -28,6 +29,9 @@
           Étage : {{ stage }}er étage
         </p>
         <p class="tracking-wide" v-if="stage == 0">Étage : Rez de chaussée</p>
+        <p class="tracking-wide">
+          Meublé : <span v-if="furniture=='oui'">Oui </span><span v-else>Non</span>
+        </p>
         <p class="tracking-wide">
           Salon ouvert : <span v-if="openroom=='oui'">Oui </span><span v-else>Non</span>
         </p>
@@ -57,6 +61,7 @@ export default {
     sector: { type: String, required: true },
     stage: { type: Number, required: true },
     openroom: { type: String, required: true },
+    furniture: { type: String, required: true },
     bail: { type: Boolean, required: true },
     lydec: { type: Number, required: true },
     photo: { type: String, required: true },

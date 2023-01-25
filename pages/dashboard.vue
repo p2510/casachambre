@@ -30,7 +30,7 @@
           </option>
         </select>
       </div>
-      <div class="col-span-2 flex flex-col gap-2">
+      <div class="col-span-1 flex flex-col gap-2">
         <label for="budget" class="text-white text-sm"
           >Votre budget ( en Dh )</label
         >
@@ -58,6 +58,18 @@
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
+        </select>
+      </div>
+      <div class="col-span-1 flex flex-col gap-2">
+        <label for="meuble" class="text-white text-sm">Meublé  </label>
+        <select
+          v-model="filter.furniture"
+          name="meuble"
+          class="col-span-1 bg-slate-700 rounded-md text-white p-2"
+        >
+          <option value="Tous">Tous</option>
+          <option value="non">Non</option>
+          <option value="oui">Oui</option>
         </select>
       </div>
       <div class="col-span-1 flex flex-col gap-2">
@@ -176,6 +188,7 @@
             <option value="4">4</option>
           </select>
         </li>
+        
         <li class="col-span-2 flex flex-col gap-2">
           <label for="salon" class="text-white text-sm">Salon ouvert </label>
           <select
@@ -200,18 +213,19 @@
         v-for="(item, index) in data.data"
         :key="index"
         :class="
-          isFilter(item.rent, item.sector, item.stage, item.openroom)
+          isFilter(item.rent, item.sector, item.stage, item.openroom,item.furniture)
             ? 'col-span-full sm:col-span-6 md:col-span-4 lg:col-span-3 w-full'
             : 'hidden'
         "
       >
         <MoleculesCard
-          v-if="isFilter(item.rent, item.sector, item.stage, item.openroom)"
+          v-if="isFilter(item.rent, item.sector, item.stage, item.openroom,item.furniture)"
           :id="item.id"
           :rent="item.rent"
           :sector="item.sector"
           :stage="item.stage"
           :openroom="item.openroom"
+          :furniture="item.furniture"
           :bail="item.bail"
           :lydec="item.lydec"
           :photo="item.photo"
@@ -242,12 +256,14 @@ const filter: Ref<{
   rent: number;
   stage: number;
   openroom: string;
+  furniture: string;
   text: string;
 }> = ref({
   sector: "Tous",
   rent: 0,
   stage: -1,
   openroom: "Tous",
+  furniture:'Tous',
   text: "",
 });
 const text: Ref<string> = ref("");
@@ -256,7 +272,8 @@ let isFilter = (
   price: number,
   sector: string,
   stage: number,
-  openroom: string
+  openroom: string,
+  furniture: string,
 ): boolean => {
   let response: Ref<boolean> = ref(true);
   const filterPrice = (): boolean => {
@@ -288,6 +305,14 @@ let isFilter = (
     }
     return res.value;
   };
+  const filterFurniture= (): boolean => {
+    let res: Ref<boolean> = ref(false);
+
+    if (filter.value.furniture == furniture || filter.value.furniture == "Tous") {
+      res.value = true;
+    }
+    return res.value;
+  };
   let filterText = (): boolean => {
     let res: Ref<boolean> = ref(false);
     const val: number = [
@@ -306,6 +331,7 @@ let isFilter = (
     filterSector() &&
     filterStage() &&
     filterOpenRoom() &&
+    filterFurniture() &&
     filterText();
   return response.value;
 };
