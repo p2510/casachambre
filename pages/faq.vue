@@ -62,7 +62,7 @@ useHead({
 const faqs:Ref<{title:string,content:string}[]>=ref([
   {
     title:'Comment mettre ma chambre sur casachambre ? ',
-    content:'Pour ajouter votre chambre sur CasaChambre , Vous devez écrire sur ce whatsapp : +212 600670388 .'
+    content:'Pour ajouter votre chambre sur CasaChambre , Vous devez écrire sur ce whatsapp : +212 604285859 .'
   },
   {
     title:'Dans quelle ville exerçons nous ?',
@@ -73,13 +73,17 @@ const faqs:Ref<{title:string,content:string}[]>=ref([
     content:'Une chambre sur CasaChambre coûte 150 Dh '
   },  {
     title:'Quand payer   la commision  ? Comment ?',
-    content:'La commision est payée une fois en liquide une fois que vous avez accepté de prendre la chambre lors de la visite . '
+    content:'La commision est payée  en  liquide et une fois que vous avez accepté de prendre la chambre lors de la visite . '
   },  {
     title:'Puis-je faire une visite avant ?',
     content:'Oui , vous pouvez visiter la chambre que vous avez souhaité avant de prendre .'
   },  {
     title:'Dans combien de  délai je peux entrer dans une chambre?',
-    content:'CasaChambre est un service systhématique , une fois que vous  êtes d\'accord , vous pouvez entrer en possesion'
+    content:'CasaChambre est un service systhématique , une fois que vous  êtes d\'accord , vous pouvez entrer en possession'
+  },
+  {
+    title:'Je suis intéressé?',
+    content:'Si vous êtes intéressé par une chambre , vous devez cliquer sur le bouton JE VEUX   et vous serez rédirigé vers whatsapp puis envoyer .'
   },
  
 ])

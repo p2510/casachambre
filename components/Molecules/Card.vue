@@ -63,7 +63,7 @@ export default {
   },
   data() {
    return {
-      shared:"https://wa.me/212698984244?text=Bonjour CasaChambre   , j'ai vu la chambre sur votre site et elle m'intéresse numéro de la chambre : N°"
+      shared:"https://wa.me/212604285859?text=Bonjour CasaChambre   , j'ai vu la chambre sur votre site et elle m'intéresse numéro de la chambre : N°"
    }
   },
 
