@@ -1,5 +1,6 @@
 const sectors: string[] = [
   "Gauthier",
+  "Chimicolor",
   "Maârif",
   "Racine",
   "Palmier",
