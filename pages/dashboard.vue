@@ -188,6 +188,18 @@
             <option value="4">4</option>
           </select>
         </li>
+        <li class="col-span-2 flex flex-col gap-2">
+          <label for="meuble" class="text-white text-sm">Meublé </label>
+          <select
+            v-model="filter.furniture"
+            name="meuble"
+            class="bg-slate-900 rounded-md text-slate-100 text-lg font-semibold p-2"
+          >
+            <option value="Tous">Tous</option>
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+          </select>
+        </li>
         
         <li class="col-span-2 flex flex-col gap-2">
           <label for="salon" class="text-white text-sm">Salon ouvert </label>
