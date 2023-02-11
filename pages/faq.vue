@@ -70,7 +70,7 @@ const faqs:Ref<{title:string,content:string}[]>=ref([
   },
   {
     title:'Combien côute la commision d\'une chambre ?',
-    content:'Une chambre sur CasaChambre coûte 150 Dh '
+    content:'Une chambre sur CasaChambre coûte 300 Dh '
   },  {
     title:'Quand payer   la commision  ? Comment ?',
     content:'La commision est payée  en  liquide et une fois que vous avez accepté de prendre la chambre lors de la visite . '
